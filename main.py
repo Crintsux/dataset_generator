@@ -42,8 +42,14 @@ with open('files/dataset.csv', 'w') as file:
       {'location':'Congo', 'compound': 'HCB', 'matrix':'Human milk', 'unit':'ng/g fat', 'limit' : 2},
       ]
 
+
+    # Execution starts here by prompting the user to enter
+    # the number of rows for each subset.
+    print("Please enter how many rows do you want in each subset:")
+    input = int(input())
+    
     # Generate and write the data.
     for sample in samples:
-          subset = generate_subset(20, sample)
+          subset = generate_subset(input, sample)
           for set in subset:
                 dataset.writerow(set)
