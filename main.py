@@ -5,8 +5,8 @@ import random
 from faker import Faker
 fake = Faker()
 
-# Generates a row of data for a given location, matrix, compound, and unit. 
-# Value and date are generated randomly both within realsitic limits.
+# Generates a row of data for a given sample list object. 
+# Value and date are generated randomly both within beliveable limits.
 def generate_row(sample):
       return [sample['location'], 'Test', sample['matrix'], sample['compound'], 
               random.uniform(0, sample['limit']), sample['unit'], 
@@ -30,7 +30,8 @@ with open('files/dataset.csv', 'w') as file:
                  'Value', 'Unit', 'Date of Measurement']
     dataset.writerow(column_headers)
 
-    # Somewhat realistic looking base for our data set.
+    # Somewhat realistic looking base for our data set. Limit puts a ceiling
+    # on the random number generation to make the values look beliveable.
     samples = [
       {'location':'Congo', 'compound': 'Dielrin', 'matrix':'Air', 'unit':'pg/m3', 'limit' : 100},
       {'location':'Egypt', 'compound': 'HCB', 'matrix':'Air', 'unit':'pg/m3', 'limit' : 30},
@@ -47,7 +48,7 @@ with open('files/dataset.csv', 'w') as file:
     # the number of rows for each subset.
     print("Please enter how many rows do you want in each subset:")
     input = int(input())
-    
+
     # Generate and write the data.
     for sample in samples:
           subset = generate_subset(input, sample)
