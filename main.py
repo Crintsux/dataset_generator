@@ -8,7 +8,7 @@ fake = Faker()
 # Generates a row of data for a given sample list object. 
 # Value and date are generated randomly both within beliveable limits.
 def generate_row(sample):
-      return [sample['location'], 'Test', sample['matrix'], sample['compound'], 
+      return [sample['location'], 'RECETOXSWTest', sample['matrix'], sample['compound'], 
               random.uniform(0, sample['limit']), sample['unit'], 
               fake.date_between(start_date='-30y', end_date='today').strftime('%d.%m.%Y')]
 
